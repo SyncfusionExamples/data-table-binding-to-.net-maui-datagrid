@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:syncfusion="clr-namespace:Syncfusion.Maui.DataGrid;assembly=Syncfusion.Maui.DataGrid"
+             xmlns:data="clr-namespace:Syncfusion.Maui.Data;assembly=Syncfusion.Maui.Data"
+             xmlns:local="clr-namespace:DataGridMAUI"
+             x:Class="DataGridMAUI.MainPage">
+    <ContentPage.BindingContext>
+        <local:ViewModel/>
+    </ContentPage.BindingContext>
+
+    <StackLayout>
+        <StackLayout Orientation="Horizontal">
+            <Label Text="Filter Options:  " VerticalOptions="Center" Margin="3"/>
+            <Picker x:Name="columns" Margin="3" WidthRequest="200" ItemsSource="{Binding Columns}" SelectedItem="{Binding SelectedColumn}"/>
+            <Picker x:Name="conditions" Margin="3" WidthRequest="200" ItemsSource="{Binding Conditions}" SelectedItem="{Binding SelectedCondition}"/>
+        </StackLayout>
+
+        <SearchBar x:Name="filterText"                   
+                       Placeholder="Search here to filter"                   
+                       SearchCommand="{Binding FilteringCommand}"
+                       SearchCommandParameter="{Binding Source={x:Reference filterText}, Path=Text}">
+            <SearchBar.Behaviors>
+                <local:SearchBarBehavior/>
+            </SearchBar.Behaviors>
+        </SearchBar>
+
+        <Grid>
+            <syncfusion:SfDataGrid x:Name="dataGrid"  
+                                   ColumnWidthMode="Fill"                          
+                                   ItemsSource="{Binding CustomerInfoView}">
+                <syncfusion:SfDataGrid.Behaviors>
+                    <local:SfDataGridBehavior/>
+                </syncfusion:SfDataGrid.Behaviors>
+                
+                <!--Sorting
+                
+  <syncfusion:SfDataGrid.SortColumnDescriptions>
+      <syncfusion:SortColumnDescription ColumnName="CustomerName"/>
+  </syncfusion:SfDataGrid.SortColumnDescriptions>
+
+  
+                Grouping
+                
+  <syncfusion:SfDataGrid.GroupColumnDescriptions>
+      <syncfusion:GroupColumnDescription ColumnName="Country"/>
+  </syncfusion:SfDataGrid.GroupColumnDescriptions>--> 
+
+            </syncfusion:SfDataGrid>
+
+            <ImageButton Margin="20" 
+                         CornerRadius="20" 
+                         HeightRequest="40" WidthRequest="40"  
+                         Background="{StaticResource Primary}"                                     
+                         VerticalOptions="End" 
+                         HorizontalOptions="End"                                    
+                         Command="{Binding CreateCustomerCommand}" Source="add.png"/>
+        </Grid>
+
+    </StackLayout>
+</ContentPage>
