@@ -4,12 +4,12 @@ namespace DataGridMAUI
 {
     public class CustomerInfo :INotifyPropertyChanged
     {
-        private double orderID;
+        private int orderID;
         private string customerID;
         private string customerName;
         private string country;
 
-        public double OrderID
+        public int OrderID
         {
             get { return orderID; }
             set

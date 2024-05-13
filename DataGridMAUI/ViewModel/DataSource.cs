@@ -34,7 +34,7 @@ namespace DataGridMAUI
         }
         internal void EditCustomerInfo(CustomerInfo customerInfo, DataRow dataRow)
         {
-            customerInfo.OrderID = (double)dataRow["OrderID"];
+            customerInfo.OrderID = (int)dataRow["OrderID"];
             customerInfo.CustomerID = (string)dataRow["CustomerID"];
             customerInfo.CustomerName = (string)dataRow["CustomerName"];
             customerInfo.Country = (string)dataRow["Country"];
@@ -42,7 +42,7 @@ namespace DataGridMAUI
         internal DataTable GetDataTable()
         {
             DataTable dataTable = new DataTable();
-            dataTable.Columns.Add("OrderID", typeof(double));
+            dataTable.Columns.Add("OrderID", typeof(int));
             dataTable.Columns.Add("CustomerName", typeof(string));
             dataTable.Columns.Add("CustomerID", typeof(string));
             dataTable.Columns.Add("Country", typeof(string));
