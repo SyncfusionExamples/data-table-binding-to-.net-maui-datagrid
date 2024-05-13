@@ -32,6 +32,9 @@
                 <syncfusion:SfDataGrid.Behaviors>
                     <local:SfDataGridBehavior/>
                 </syncfusion:SfDataGrid.Behaviors>
+                <syncfusion:SfDataGrid.Columns>
+                    <syncfusion:DataGridNumericColumn MappingName="OrderID" Format="D" />
+                </syncfusion:SfDataGrid.Columns>
                 
                 <!--Sorting
                 
